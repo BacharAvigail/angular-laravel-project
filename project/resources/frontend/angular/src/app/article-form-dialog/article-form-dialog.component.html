@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>{{!!data.id ? 'Edit' : 'Create'}} Article</h1>
+
+<div mat-dialog-content>
+    <form [formGroup]="formInstance">
+        <div class="mt-5" *ngIf="!!data.id">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>ID *</mat-label>
+                <input matInput type="text" name="id" formControlName="id" />
+                <mat-error *ngIf="
+                formInstance.controls['id']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Title *</mat-label>
+                <input matInput type="text" name="title" formControlName="title" />
+                <mat-error *ngIf="
+        formInstance.controls['title']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Content *</mat-label>
+                <input matInput type="text" name="content" formControlName="content" />
+                <mat-error *ngIf="
+                    formInstance.controls['content']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5" *ngIf="!!data.id">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Updated at *</mat-label>
+                <input matInput type="text" name="updated_at" formControlName="updated_at" />
+                <mat-error *ngIf="
+                            formInstance.controls['updated_at']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5" *ngIf="!!data.id">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Created at *</mat-label>
+                <input matInput type="text" name="created_at" formControlName="created_at" />
+                <mat-error *ngIf="
+                            formInstance.controls['created_at']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</div>
+
+<div class="mt-5" mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="formInstance.dirty && formInstance.errors" (click)="save()"
+        cdkFocusInitial>{{!!data.id ? 'Update' : 'Create'}}</button>
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+</div>
